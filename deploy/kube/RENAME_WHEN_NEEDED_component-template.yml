@@ -1,0 +1,29 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: {{CI_PROJECT_NAME}}
+  namespace: {{KUBE_NAMESPACE}}
+spec:
+  type: secretstores.gcp.secretmanager
+  version: v1
+  metadata:
+  - name: type
+    value: "service_account"
+  - name: project_id
+    value: "{{GCP_PROJECT_ID}}"
+  - name: private_key_id
+    value: "{{GCP_PRIVATE_KEY_ID}}"
+  - name: client_email
+    value: "{{GCP_CLIENT_EMAIL}}"
+  - name: client_id
+    value: "{{GCP_CLIENT_ID}}"
+  - name: auth_uri
+    value: "https://accounts.google.com/o/oauth2/auth"
+  - name: token_uri
+    value: "https://oauth2.googleapis.com/token"
+  - name: auth_provider_x509_cert_url
+    value: "https://www.googleapis.com/oauth2/v1/certs"
+  - name: client_x509_cert_url
+    value: "{{GCP_CLIENT_X509_CERT_URL}}"
+  - name: private_key
+    value: "{{GCP_PRIVATE_KEY}}"
